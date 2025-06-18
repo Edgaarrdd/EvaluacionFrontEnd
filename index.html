@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="icon" href="/images/favicon.png" type="image/png">
+    <title>FastGo - Entregas Express</title>
+</head>
+<body>
+    <main>
+        <nav class="navbar navbar-expand-lg navbar-light mi-navbar">
+            <a class="navbar-brand" href="index.html"><img src="/images/favicon.png" alt="logo" width="40"
+                    height="40" loading="lazy" /></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="services.html">Servicios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contactanos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">Quienes somos</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <section class="video-background">
+            <video class="d-none d-md-block" autoplay muted loop playsinline>
+                <source src="/video/fastgo3.mp4" type="video/mp4">
+            </video>
+            <div id="video-overlay" class="video-overlay-content">
+                <img src="images/favicon.png" alt="Logo" class="logo" height="400" />
+                <h1 class="display-4">FastGo - Entregas Express</h1>
+                <p class="card-text">Entrega rápida. Tecnología al servicio de tu ciudad.</p>
+            </div>
+        </section>
+        <section class="container my-5 py-3">
+            <h2 class="text-center pb-5 mb-5">¿Por qué elegir FastGo?</h2>
+            <div class="row text-center">
+                <article class="col-md-4 mb-4">
+                    <div class="card text-white bg-primary h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">Entregas en menos de 2 horas</h5>
+                            <p class="card-text">Nos especializamos en entregas ultrarrápidas dentro de la ciudad. ¡Tu
+                                pedido llega antes de que lo pienses!</p>
+                        </div>
+                    </div>
+                </article>
+                <article class="col-md-4 mb-4">
+                    <div class="card text-white bg-primary h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">Seguimiento en tiempo real</h5>
+                            <p class="card-text">Sigue tu pedido minuto a minuto desde cualquier dispositivo.
+                                Transparencia y control total.</p>
+                        </div>
+                    </div>
+                </article>
+                <article class="col-md-4 mb-4">
+                    <div class="card text-white bg-primary h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">Precios accesibles</h5>
+                            <p class="card-text">Planes flexibles según tus necesidades. Servicio premium a un costo
+                                justo.</p>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+        <section class="container py-5 mb-4">
+            <h2 class="text-center pb-5 mb-5">¿Cómo funciona la app FastGo?</h2>
+            <div class="row text-center">
+                <article class="col-md-3 mb-4">
+                    <img src="/images/step/mapa.png" alt="Paso 1" class="mb-3" width="80">
+                    <h5>1. Ingresa tu dirección</h5>
+                    <p>Abre la app y selecciona el lugar de recogida y el destino del paquete.</p>
+                </article>
+                <article class="col-md-3 mb-4">
+                    <img src="/images/step/paquete.png" alt="Paso 2" class="mb-3" width="80">
+                    <h5>2. Elige el tipo de envío</h5>
+                    <p>Selecciona si es express, estándar o especializado. Adjunta una foto si deseas.</p>
+                </article>
+                <article class="col-md-3 mb-4">
+                    <img src="/images/step/rastreo-de-envio.png" alt="Paso 3" class="mb-3" width="80">
+                    <h5>3. Sigue tu pedido</h5>
+                    <p>Observa en tiempo real cómo tu paquete avanza hasta su destino.</p>
+                </article>
+                <article class="col-md-3 mb-4">
+                    <img src="/images/step/recibido.png" alt="Paso 4" class="mb-3" width="80">
+                    <h5>4. ¡Recibe y califica!</h5>
+                    <p>Recibe tu entrega, califica al repartidor y revisa el historial de pedidos.</p>
+                </article>
+            </div>
+        </section>
+        <section class="container">
+            <h2 class="text-center mb-5 pb-4">Empresas que confían en nosotros</h2>
+            <div class="carousel slide" data-ride="carousel" data-interval="3000">
+                <div class="carousel-inner text-center mb-5 py-3">
+                    <article class="carousel-item active">
+                        <div class="d-flex justify-content-around align-items-center flex-wrap">
+                            <img src="images/company/nike.png" class="cliente-logo mb-4" alt="Nike">
+                            <img src="images/company/p-g.png" class="cliente-logo mb-4" alt="p&g">
+                            <img src="images/company/pepsi.png" class="cliente-logo mb-4" alt="Pepsi">
+                        </div>
+                    </article>
+                    <article class="carousel-item">
+                        <div id="companys" class="d-flex justify-content-around align-items-center flex-wrap">
+                            <img src="images/company/derco-center-seeklogo.png" class="cliente-logo mb-4" alt="derco">
+                            <img src="images/company/starbucks.png" class="cliente-logo mb-4" alt="starbucks">
+                            <img src="images/company/adidas.png" class="cliente-logo mb-4" alt="nike">
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+        <section id="readytogo" class="bg-primary text-white text-center py-5">
+            <div class="container">
+                <h2 class="mb-3">¿Listo para enviar con FastGo?</h2>
+                <p class="mb-5">Regístrate ahora o contáctanos para comenzar a disfrutar de nuestras entregas express.
+                </p>
+                <a href="contact.html" class="btn btn-light btn-lg mb-3">Contáctanos</a>
+            </div>
+        </section>
+        <footer class="bg-dark text-white text-center py-4">
+            <p class="mb-0">&copy; 2025 FastGo. Todos los derechos reservados.</p>
+        </footer>
+
+    </main>
+</body>
+
+</html>
