@@ -44,6 +44,7 @@ Casos para elegir
 CASO 4: Empresa de Reparto Urbano – “FastGo”
 Contexto:
 FastGo realiza entregas express en la ciudad. Usan una app de tracking, pero no tienen visibilidad general del rendimiento por zona, repartidor o cliente.
+<<<<<<< HEAD
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------
 Evaluación 2 
@@ -77,3 +78,35 @@ o	Nombre oficial del país (debe cargarlo desde la misma API) JSON.
       }
     }
 o	Comentarios
+=======
+ 
+---
+
+## Requerimientos para la Evaluación II
+
+El objetivo principal de esta evaluación es consolidar el manejo de formularios, implementar validaciones robustas y gestionar el almacenamiento de datos en **LocalStorage**. Al enviar el formulario, se deben validar los datos (incluyendo el formato del correo electrónico) y posteriormente guardar esta información en **LocalStorage**.
+
+### Instrucciones Específicas:
+
+* **Base del Proyecto:** Puedes utilizar el mismo caso práctico de la Evaluación I o crear una nueva **interfaz web con un formulario de contacto utilizando Bootstrap**.
+* **Validación de Correo Electrónico:** Implementa una **validación de formato** para el campo de correo electrónico, asegurando que sea una dirección válida.
+* **Almacenamiento en LocalStorage:**
+    * **Guardar Datos:** Almacena todos los datos del formulario en **LocalStorage** tras una validación exitosa.
+    * **Listar Registros:** Muestra una lista de todos los registros almacenados en **LocalStorage**.
+    * **Editar Registros:** Permite la **edición de un registro existente** y actualiza su información en **LocalStorage**.
+    * **Eliminar Registros:** Habilita la **eliminación de registros** individuales de **LocalStorage**.
+* **Control de Versiones y Entrega:** Sube tu proyecto a **GitHub** o envíalo por correo electrónico, según se indique.
+* **Uso de jQuery:** La implementación de las funcionalidades debe realizarse utilizando la **librería jQuery**.
+* **Integración con API de Países:**
+    * Conéctate a la API: `https://restcountries.com/v3.1/lang/spanish`.
+    * Obtén y utiliza los datos de los países para cargar dinámicamente la información requerida en el formulario.
+* **Campos del Formulario de Contacto:** El formulario debe incluir los siguientes campos:
+    * **Nombre**
+    * **Teléfono**
+    * **Email**
+    * **País:** Este campo debe obtenerse de la API de países.
+    * **Nombre Oficial del País:** Este dato también debe cargarse desde la misma API, específicamente de la propiedad `name.official` (o `name.nativeName.spa.official` para la versión en español si está disponible y es preferible).
+    * **Comentarios**
+
+---
+>>>>>>> fe2a346 (Se agrega nueva evaluación al readme)
