@@ -155,7 +155,7 @@
                 if (email === '') {
                     errores.push("El correo electrónico está vacío.");
                 } else {
-                    let regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    let regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; //expresión regular para validar el formato del correo electrónico
                     if (!regexEmail.test(email)) {
                         errores.push("El correo electrónico no tiene un formato válido.");
                     }
@@ -278,7 +278,7 @@
                         <a class="nav-link" href="services.html">Servicios</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="contact.html">Contáctanos</a>
+                        <a class="nav-link" href="contactJS.html">Contáctanos</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="about.html">Quienes somos</a>
