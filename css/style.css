@@ -97,10 +97,17 @@ nav .navbar {
 .card img {
   height: 100%;
 }
-.about-img{
+
+.about-img {
   width: 50rem;
   height: 30rem;
 }
+
+.form-group small {
+  font-size: 0.8rem;
+  color: #6c757d;
+}
+
 /*Media query para video */
 @media (max-width: 767px) {
   .video-background {
