@@ -1,112 +1,130 @@
- 
-Paper de Trabajo: Proyecto de FrontEnd
-Instrucciones Generales
-Cada alumno deberá diseñar e implementar un sitio web con los requisitos mínimos que se exigen en la sección Requerimientos. Para lo anterior el estudiante deberá escoger uno de los 5 casos que provee el docente o traer uno a su elección, los casos empresas que necesitan un sitio web para promocionarse en internet.
-Esta es la primera evaluación de la asignatura por lo que debe tomárselo en serio y ser responsable para poder traer el trabajo dado que la única fecha para mostrarlo y obtener la máxima nota es el día 18.06.2025. Tiene una oportunidad de feedback el dia 11.06.2025
-Cualquier entrega fuera de plazo tiene como nota máxima un 3,9. El NO entregar la evaluación una vez terminada la jornada del día 18.06.2025 supone la nota mínima permitida por INACAP
- 
- 
-Requerimientos
-Los siguientes son los requerimientos mínimos a cumplir si es que está considerando tener la nota máxima.
-Crear un sitio web para dicha empresa
-1.	Crear un logotipo
-2.	Crear un nombre o utilizar el que se brinda
-3.	El sitio debe tener al menos 4 paginas navegables
-4.	Debe utilizar framework bootstrap 4.5 obligatorio
-5.	El sitio debe ser responsive y lograr una visualización optima al menos en un Smartphone.
-6.	El desarrollo y el código debe ser semántico y respetuoso con los nombres de archivos, carpetas, y otros
-7.	Incluya el logo de la empresa y los colores corporativos
-8.	Debe incluir un favicon para el sitio
-9.	Debe utilizar imágenes y esas imágenes ser alusivas a la compañía, utilice IA si es necesario
-10.	Todo su proyecto debe estar publicado en GitHub con al menos 3 commits, intente hacer commit cada vez que termine una de las páginas de su sitio, con ello cumple a cabalidad los 3 commits.  
-Secciones a Implementar
-1.	Index:
-a.	NavBar
-b.	Carrousel o slider
-c.	Sección de contenido
-d.	Footer
-2.	Sobre Nosotros
-a.	NavBar
-b.	Información sobre la compañía, equipos, historia, misión, visión…
-c.	Footer
-3.	Servicios
-a.	NavBar
-b.	6 servicios/productos con imagen, texto, precio, condiciones...etc.
-c.	Footer
-4.	Contactenos
-a.	NavBar
-b.	Formulario de Contactenos
-c.	Mapa de la ubicacion de la empresa
-d.	Footer
- 
-Casos para elegir
- 
-CASO 4: Empresa de Reparto Urbano – “FastGo”
-Contexto:
-FastGo realiza entregas express en la ciudad. Usan una app de tracking, pero no tienen visibilidad general del rendimiento por zona, repartidor o cliente.
-<<<<<<< HEAD
+# Proyecto de FrontEnd 1
 
----------------------------------------------------------------------------------------------------------------------------------------------------------------
-Evaluación 2 
+## 📌 Instrucciones Generales
 
-Requerimientos Evaluación II
-Objetivo
-El foco estará en el manejo de formularios, validación de correo electrónico y almacenamiento en LocalStorage, es decir al apretar enviar en su formulario además de validar los datos que no estén vacíos, debe validar que el correo electrónico sea correcto y almacenar en el LocalStorage. Instrucciones especificas:
-•	Usar el mismo caso trabajado en la Evaluación I, si lo desea no lo utilice, pero debe traer una web de formulario de contacto con bootstrap.
-•	Validar el campo de correo electrónico (formato válido).
-•	Almacenar los datos del formulario en LocalStorage.
-•	Listar los datos que se almacenan
-•	Editar un registro y actualizar su LocalStorage
-•	Eliminar un registro del LocalStorage
-•	Subir el proyecto a GitHub o enviar por correo.
-•	Utilizar Jquery
-•	Conectarse a la API: https://restcountriies.com/v3.1/lang/spanish y obtener los datos de los países
-•	Además, su formulario de contacto debe tener:
-o	Nombre
-o	Teléfono
-o	Email
-o	País
-o	Nombre oficial del país (debe cargarlo desde la misma API) JSON.
-    "name": {
-      "common": "Nicaragua",
-      "official": "Republic of Nicaragua",
-      "nativeName": {
-        "spa": {
-          "official": "República de Nicaragua",
-          "common": "Nicaragua"
-        }
-      }
-    }
-o	Comentarios
-=======
- 
----
+Cada alumno deberá diseñar e implementar un sitio web cumpliendo los requisitos mínimos descritos en la sección **Requerimientos**. 
 
-## Requerimientos para la Evaluación II
+El estudiante debe escoger uno de los 5 casos entregados por el docente, o proponer uno propio. Los casos están relacionados con empresas que necesitan promocionarse en internet.
 
-El objetivo principal de esta evaluación es consolidar el manejo de formularios, implementar validaciones robustas y gestionar el almacenamiento de datos en **LocalStorage**. Al enviar el formulario, se deben validar los datos (incluyendo el formato del correo electrónico) y posteriormente guardar esta información en **LocalStorage**.
-
-### Instrucciones Específicas:
-
-* **Base del Proyecto:** Puedes utilizar el mismo caso práctico de la Evaluación I o crear una nueva **interfaz web con un formulario de contacto utilizando Bootstrap**.
-* **Validación de Correo Electrónico:** Implementa una **validación de formato** para el campo de correo electrónico, asegurando que sea una dirección válida.
-* **Almacenamiento en LocalStorage:**
-    * **Guardar Datos:** Almacena todos los datos del formulario en **LocalStorage** tras una validación exitosa.
-    * **Listar Registros:** Muestra una lista de todos los registros almacenados en **LocalStorage**.
-    * **Editar Registros:** Permite la **edición de un registro existente** y actualiza su información en **LocalStorage**.
-    * **Eliminar Registros:** Habilita la **eliminación de registros** individuales de **LocalStorage**.
-* **Control de Versiones y Entrega:** Sube tu proyecto a **GitHub** o envíalo por correo electrónico, según se indique.
-* **Uso de jQuery:** La implementación de las funcionalidades debe realizarse utilizando la **librería jQuery**.
-* **Integración con API de Países:**
-    * Conéctate a la API: `https://restcountries.com/v3.1/lang/spanish`.
-    * Obtén y utiliza los datos de los países para cargar dinámicamente la información requerida en el formulario.
-* **Campos del Formulario de Contacto:** El formulario debe incluir los siguientes campos:
-    * **Nombre**
-    * **Teléfono**
-    * **Email**
-    * **País:** Este campo debe obtenerse de la API de países.
-    * **Nombre Oficial del País:** Este dato también debe cargarse desde la misma API, específicamente de la propiedad `name.official` (o `name.nativeName.spa.official` para la versión en español si está disponible y es preferible).
-    * **Comentarios**
+> **Importante**:  
+> Esta es la primera evaluación de la asignatura.  
+> ✅ **Fecha de entrega**: 18.06.2025  
+> 🔁 **Feedback disponible**: 11.06.2025  
+> ❌ **Entregas fuera de plazo** tendrán nota máxima 3,9  
+> ⛔ **No entregar** el 18.06.2025 implica nota mínima (1,0 según normativa INACAP)
 
 ---
->>>>>>> fe2a346 (Se agrega nueva evaluación al readme)
+
+## ✅ Requerimientos
+
+Para optar a la **nota máxima**, se deben cumplir los siguientes puntos:
+
+- [ ] Crear un **sitio web** para una empresa.
+- [ ] Crear un **logotipo**.
+- [ ] Crear un **nombre de empresa** (o usar el proporcionado).
+- [ ] Tener **al menos 4 páginas navegables**.
+- [ ] Usar el framework **Bootstrap 4.5** (obligatorio).
+- [ ] Sitio debe ser **responsive** (visualización óptima al menos en Smartphone).
+- [ ] Código **semántico** y respetuoso con nombres de archivos/carpetas.
+- [ ] Incluir **logo** y **colores corporativos**.
+- [ ] Incluir un **favicon**.
+- [ ] Usar **imágenes** relacionadas a la empresa (puede usar IA).
+- [ ] Proyecto debe estar **publicado en GitHub** con al menos **3 commits** (uno por cada página desarrollada idealmente).
+
+---
+
+## 🧩 Secciones a Implementar
+
+### 1. `Index.html`
+- NavBar (barra de navegación)
+- Carrusel o slider
+- Sección de contenido principal
+- Footer (pie de página)
+
+### 2. `SobreNosotros.html`
+- NavBar
+- Información de la compañía: equipo, historia, misión, visión
+- Footer
+
+### 3. `Servicios.html`
+- NavBar
+- 6 productos o servicios con:
+  - Imagen
+  - Descripción
+  - Precio
+  - Condiciones
+- Footer
+
+### 4. `Contacto.html`
+- NavBar
+- Formulario de contacto
+- Mapa de ubicación de la empresa
+- Footer
+
+---
+
+## 📦 Caso Elegido
+
+### 🛵 **CASO 4: Empresa de Reparto Urbano – “FastGo”**
+
+#### Contexto:
+FastGo realiza **entregas express** dentro de la ciudad.  
+Actualmente cuentan con una **app de tracking**, pero carecen de visibilidad general sobre:
+- Rendimiento por zona
+- Rendimiento por repartidor
+- Rendimiento por cliente
+
+
+# Proyecto de FrontEnd 2 – Evaluación II
+
+## 🎯 Objetivo General
+
+Consolidar el manejo de formularios en HTML utilizando **Bootstrap**, aplicar **validaciones robustas** e implementar el almacenamiento de datos en **LocalStorage**. El objetivo es validar los datos del formulario (incluyendo el correo electrónico), almacenarlos y permitir su gestión completa (listar, editar y eliminar).
+
+---
+
+## ✅ Requerimientos
+
+- [ ] Utilizar el mismo caso de la Evaluación I o crear una nueva **interfaz web con formulario de contacto**.
+- [ ] Implementar el formulario con **Bootstrap**.
+- [ ] Validar el **formato del correo electrónico**.
+- [ ] Guardar los datos del formulario en **LocalStorage** luego de una validación exitosa.
+- [ ] Mostrar una **lista de todos los registros** almacenados en LocalStorage.
+- [ ] Permitir la **edición** de registros existentes y actualizarlos en LocalStorage.
+- [ ] Permitir la **eliminación** de registros individuales.
+- [ ] Utilizar la **librería jQuery** para todas las funcionalidades.
+- [ ] Integrar la API de países:  
+  `https://restcountries.com/v3.1/lang/spanish`.
+
+---
+
+## 🧩 Campos del Formulario
+
+El formulario de contacto debe incluir los siguientes campos:
+
+- [ ] **Nombre**
+- [ ] **Teléfono**
+- [ ] **Email** (con validación de formato)
+- [ ] **País** (cargado desde la API)
+- [ ] **Nombre Oficial del País**  
+  (desde `name.official` o preferiblemente `name.nativeName.spa.official`)
+- [ ] **Comentarios**
+
+---
+
+## 🌐 Integración con API REST
+
+Usar la API `https://restcountries.com/v3.1/lang/spanish` para:
+
+- Obtener la **lista de países** en idioma español.
+- Cargar dinámicamente los campos **País** y **Nombre Oficial del País** en el formulario.
+
+---
+
+## 💻 Control de Versiones y Entrega
+
+- [ ] Publicar el proyecto en **GitHub** con mínimo 3 commits significativos.
+- [ ] Alternativamente, enviar el proyecto por **correo electrónico** si así se indica por el docente.
+- [ ] Asegúrate de incluir en el repositorio el archivo `README.md` con toda la información del proyecto.
+
+
