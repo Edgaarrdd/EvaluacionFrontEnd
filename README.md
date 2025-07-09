@@ -44,4 +44,36 @@ Casos para elegir
 CASO 4: Empresa de Reparto Urbano – “FastGo”
 Contexto:
 FastGo realiza entregas express en la ciudad. Usan una app de tracking, pero no tienen visibilidad general del rendimiento por zona, repartidor o cliente.
- 
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+Evaluación 2 
+
+Requerimientos Evaluación II
+Objetivo
+El foco estará en el manejo de formularios, validación de correo electrónico y almacenamiento en LocalStorage, es decir al apretar enviar en su formulario además de validar los datos que no estén vacíos, debe validar que el correo electrónico sea correcto y almacenar en el LocalStorage. Instrucciones especificas:
+•	Usar el mismo caso trabajado en la Evaluación I, si lo desea no lo utilice, pero debe traer una web de formulario de contacto con bootstrap.
+•	Validar el campo de correo electrónico (formato válido).
+•	Almacenar los datos del formulario en LocalStorage.
+•	Listar los datos que se almacenan
+•	Editar un registro y actualizar su LocalStorage
+•	Eliminar un registro del LocalStorage
+•	Subir el proyecto a GitHub o enviar por correo.
+•	Utilizar Jquery
+•	Conectarse a la API: https://restcountriies.com/v3.1/lang/spanish y obtener los datos de los países
+•	Además, su formulario de contacto debe tener:
+o	Nombre
+o	Teléfono
+o	Email
+o	País
+o	Nombre oficial del país (debe cargarlo desde la misma API) JSON.
+    "name": {
+      "common": "Nicaragua",
+      "official": "Republic of Nicaragua",
+      "nativeName": {
+        "spa": {
+          "official": "República de Nicaragua",
+          "common": "Nicaragua"
+        }
+      }
+    }
+o	Comentarios
