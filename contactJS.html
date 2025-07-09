@@ -29,18 +29,17 @@
                 if (dataBase.length > 0) {
                     dataBase.forEach(function (contacto) {
                         tbody.append(`
-                            <tr>
-                                <td>${contacto.nombre}</td>
-                                <td>${contacto.telefono}</td>
-                                <td>${contacto.email}</td>
-                                <td>${contacto.pais}</td>
-                                <td>${contacto.comentarios}</td>
-                                <td>
-                                    <button class="btn btn-sm btn-info btn-editar" data-id="${contacto.id}">Editar</button>
-                                    <button class="btn btn-sm btn-danger btn-eliminar" data-id="${contacto.id}">Eliminar</button>
-                                </td>
-                            </tr>
-                        `);
+                        <tr>
+                            <td>${contacto.nombre}</td>
+                            <td>${contacto.telefono}</td>
+                            <td>${contacto.email}</td>
+                            <td>${contacto.countryCommonName}</td>  <td>${contacto.countryOfficialName}</td> <td>${contacto.comentarios}</td>
+                            <td>
+                                <button class="btn btn-sm btn-info btn-editar" data-id="${contacto.id}">Editar</button>
+                                <button class="btn btn-sm btn-danger btn-eliminar" data-id="${contacto.id}">Eliminar</button>
+                            </td>
+                        </tr>
+                    `);
                     });
                     $('#tabla-contactos').show();
                     $('#mensaje-sin-contactos').hide();
@@ -71,9 +70,11 @@
                     });
 
                     data.forEach(function (country) {
-                        // Asegurarse de que country.name.official exista antes de usarlo
-                        const officialName = country.name.official || country.name.common; // Fallback al nombre común si no hay oficial
-                        $('#selectCountry').append(`<option value="${officialName}">${country.name.common}</option>`);
+                        const commonName = country.name.common;
+                        const officialName = country.name.official || commonName; // Fallback al nombre común si no hay oficial
+                        // Guardamos el nombre oficial en el 'value' y el nombre común como texto visible.
+                        // Podríamos guardar también el commonName como un data-attribute si fuera necesario accederlo más tarde de forma individual.
+                        $('#selectCountry').append(`<option value="${officialName}" data-common-name="${commonName}">${commonName}</option>`);
                     });
                     $('#otherCountry').remove(); // Si la API carga bien, removemos el campo de texto de otro país
                 },
@@ -117,9 +118,27 @@
                 let nombre = $('#nombre').val().trim();
                 let telefono = $('#telefono').val().trim();
                 let email = $('#email').val().trim();
-                let countrySelected = $('#selectCountry').val();
+                let countrySelectedCommonName = '';
+                let countrySelectedOfficialName = '';
                 let comentarios = $("#textareaComentario").val().trim();
-                let officialCountryName = $('#inputOfficialCountryName').val(); // Este ya debería estar seteado por el change del select
+
+                // Lógica para obtener los nombres de país según si se usa el select o el input manual
+                if ($('#otherCountry').is(':visible')) {
+                    // Si el campo manual está visible (API falló)
+                    countrySelectedCommonName = $('#otherCountry').val().trim();
+                    countrySelectedOfficialName = $('#otherCountry').val().trim(); // En este caso, el oficial es el mismo que el común
+                    if (countrySelectedCommonName === '') {
+                        errores.push("Ingrese el nombre del país manualmente.");
+                    }
+                } else {
+                    // Si el select está visible (API cargó bien)
+                    const selectedOption = $('#selectCountry option:selected');
+                    countrySelectedCommonName = selectedOption.text(); // El texto visible es el nombre común
+                    countrySelectedOfficialName = selectedOption.val(); // El valor es el nombre oficial
+                    if (countrySelectedOfficialName === '') { // Validar que se seleccionó algo
+                        errores.push("Seleccione un país.");
+                    }
+                }
 
                 if (nombre === '') {
                     errores.push("El nombre es obligatorio.");
@@ -135,17 +154,6 @@
                         errores.push("El correo electrónico no tiene un formato válido.");
                     }
                 }
-                if (countrySelected === '') {
-                    errores.push("Seleccione un país.");
-                }
-                // Si el campo otherCountry está visible, se valida ese en lugar del select
-                if ($('#otherCountry').is(':visible') && $('#otherCountry').val().trim() === '') {
-                    errores.push("Ingrese el nombre del país.");
-                    officialCountryName = $('#otherCountry').val().trim(); // Usar el valor manual si es el caso
-                } else if ($('#otherCountry').is(':visible') && $('#otherCountry').val().trim() !== '') {
-                    officialCountryName = $('#otherCountry').val().trim();
-                }
-
 
                 if (comentarios === '') {
                     errores.push("Debe ingresar un comentario.");
@@ -160,31 +168,26 @@
                 } else {
                     $('#div-errores').hide(); // Ocultar errores si todo está bien
 
+                    const contactoData = {
+                        nombre: nombre,
+                        telefono: telefono,
+                        email: email,
+                        countryCommonName: countrySelectedCommonName,    // Guardamos el común
+                        countryOfficialName: countrySelectedOfficialName, // Guardamos el oficial
+                        comentarios: comentarios
+                    };
+
                     if (editingId) {
                         // Modo edición: encontrar y actualizar el contacto
                         const contactoIndex = dataBase.findIndex(c => c.id === editingId);
                         if (contactoIndex !== -1) {
-                            dataBase[contactoIndex] = {
-                                id: editingId,
-                                nombre: nombre,
-                                telefono: telefono,
-                                email: email,
-                                pais: officialCountryName,
-                                comentarios: comentarios
-                            };
+                            dataBase[contactoIndex] = { ...dataBase[contactoIndex], ...contactoData }; // Mantiene el ID y actualiza los datos
                             alert('Contacto actualizado con éxito!');
                         }
                     } else {
-                        // agregar un nuevo contacto
-                        const nuevoContacto = {
-                            id: Date.now(), // Usar un timestamp como ID único
-                            nombre: nombre,
-                            telefono: telefono,
-                            email: email,
-                            pais: officialCountryName,
-                            comentarios: comentarios
-                        };
-                        dataBase.push(nuevoContacto);
+                        // Modo nuevo: agregar un nuevo contacto
+                        contactoData.id = Date.now(); // Asignar un ID único solo al crear
+                        dataBase.push(contactoData);
                         alert('Contacto guardado con éxito!');
                     }
 
@@ -203,25 +206,25 @@
                     $('#nombre').val(contactoToEdit.nombre);
                     $('#telefono').val(contactoToEdit.telefono);
                     $('#email').val(contactoToEdit.email);
-                    
-                    // Seleccionar el país en el dropdown
-                    const selectCountryElement = $('#selectCountry');
-                    let optionFound = false;
-                    selectCountryElement.find('option').each(function() {
-                        if ($(this).val() === contactoToEdit.pais) {
-                            $(this).prop('selected', true);
-                            optionFound = true;
-                            return false; // Salir del each
-                        }
-                    });
 
-                    // Si el país no se encontró en el select (ej. si fue ingresado manualmente), mostrar el campo "otherCountry"
-                    if (!optionFound && $('#otherCountry').length > 0) {
-                        $('#selectCountry').remove();
-                        $('#otherCountry').val(contactoToEdit.pais).show();
-                    } else {
-                        $('#inputOfficialCountryName').val(contactoToEdit.pais).show(); // Mostrar el campo de nombre oficial
+                    // Lógica para precargar el select o el input manual al editar
+                    if ($('#otherCountry').length && !$('#selectCountry').length) { // Si el input manual es el único que existe
+                        $('#otherCountry').val(contactoToEdit.countryOfficialName).show();
+                    } else { // Si el select es el que existe
+                        let officialNameFound = false;
+                        $('#selectCountry option').each(function () {
+                            if ($(this).val() === contactoToEdit.countryOfficialName) {
+                                $(this).prop('selected', true);
+                                officialNameFound = true;
+                                return false; // Salir del each
+                            }
+                        });
+                        $('#inputOfficialCountryName').val(contactoToEdit.countryOfficialName);
                         $('#containerOfficialCountryName').show();
+
+                        if (!officialNameFound) {
+                            $('#selectCountry').val(''); // Resetea el select si no encuentra la opción exacta
+                        }
                     }
 
                     $('#textareaComentario').val(contactoToEdit.comentarios);
@@ -324,11 +327,10 @@
                             <button class="btn btn-sm btn-primary" type="submit" id="btn-submit">Enviar
                                 Mensaje</button>
                             <button class="btn btn-sm btn-secondary" id="btn-cancel-edit" type="button"
-                                style="display: none;">Cancelar Edición</button>
+                                style="display: none;">Cancelar Edición</button> <!-- Botón oculto para cancelar edición -->
                         </div>
                     </form>
                 </section>
-
                 <section class="container my-4">
                     <h2 class="mb-4 text-center">Listado de Contactos</h2>
                     <table id="tabla-contactos" style="display: none;" class="table table-striped table-bordered">
@@ -337,23 +339,23 @@
                                 <th>Nombre</th>
                                 <th>Teléfono</th>
                                 <th>Email</th>
-                                <th>País</th>
+                                <th>País (Común)</th>
+                                <th>País (Oficial)</th>
                                 <th>Comentarios</th>
                                 <th>Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
-                            </tbody>
+                        </tbody>
                     </table>
                     <div class="alert alert-info text-center" id="mensaje-sin-contactos" style="display:none">No hay
                         contactos para mostrar.</div>
                 </section>
-
-
                 <section id="map" class="container mb-4">
                     <h2 class="text-center mb-5">Nuestra Ubicación</h2>
                     <div class="embed-responsive embed-responsive-16by9">
-                        <iframe class="embed-responsive-item" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d212998.56777909782!2d-70.7946411694144!3d-33.472678897708!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662c5410425af2f%3A0x8475d53c400f0931!2sSantiago%2C%20Regi%C3%B3n%20Metropolitana!5e0!3m2!1ses!2scl!4v1749607339672!5m2!1ses!2scl"
+                        <iframe class="embed-responsive-item"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d212998.56777909782!2d-70.7946411694144!3d-33.472678897708!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662c5410425af2f%3A0x8475d53c400f0931!2sSantiago%2C%20Regi%C3%B3n%20Metropolitana!5e0!3m2!1ses!2scl!4v1749607339672!5m2!1ses!2scl"
                             width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
                             referrerpolicy="no-referrer-when-downgrade">
                         </iframe>
