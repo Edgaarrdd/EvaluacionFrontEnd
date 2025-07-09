@@ -144,8 +144,14 @@
                     errores.push("El nombre es obligatorio.");
                 }
                 if (telefono === '') {
-                    errores.push("El teléfono es obligatorio.");
+                errores.push("El teléfono es obligatorio.");
+            } else {
+                
+                let regexTelefono = /^\d+$/; // Expresión regular para validar que solo contenga dígitos
+                if (!regexTelefono.test(telefono)) {
+                    errores.push("El teléfono solo debe contener números.");
                 }
+            }
                 if (email === '') {
                     errores.push("El correo electrónico está vacío.");
                 } else {
@@ -250,7 +256,7 @@
                     alert('Contacto eliminado con éxito!');
                 }
             });
-
+            
             // Cargar contactos al iniciar la página
             renderizarContactos();
         });
@@ -361,7 +367,6 @@
                         </iframe>
                     </div>
                 </section>
-
             </div>
         </section>
         <footer class="bg-dark text-white text-center py-4">
